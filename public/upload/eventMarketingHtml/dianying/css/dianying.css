@@ -1,0 +1,81 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+	font-family:"微软雅黑"
+}
+.clearfix{clear:both;}
+
+@media (min-width: 769px){
+	.dy_top .dy{display:block;}
+	.dy_top .dy02{display:none;}
+	.dy01 h1{font-size:32px;padding-top:70px;margin-bottom:38px;}
+	.dy01 p{width:90%;font-size:18px;color:#242424;margin:0 auto;text-align:center;line-height:38px;}
+	.dy01 span{font-size:24px;}
+	.dy01_box{ width:100%;background:url(../images/di01.png) no-repeat left top;padding-top:40px;}
+	.dy01{max-width:1200px; height:320px;margin:0 auto; background:url(../images/bg01.png) no-repeat center top;}
+	
+	.dy03 h1{color:black;font-size:24px; width:100%;text-align:center;margin-bottom:30px;margin-top:40px;}
+	.dy03 h3{width:56%;margin:0 auto;text-align:center; background-color:#303841;color:#fff;padding:20px 0px; font-weight:normal;border-radius:5px;font-size:24px;}
+	.dy03{max-width:1200px; height:710px;margin:0 auto; background:url(../images/bg02.png) no-repeat center top;padding-top:10px;}
+	.dy03_nr{padding:55px 0; background:url(../images/chilun.png) no-repeat left 100px; width:1200px !important;}
+	.dy03 div{margin:20px auto;display:block;width:56%;}
+	.dy03 h2{ text-align:center;color:#cb2a2d;font-size:24px;}
+	.dy03 input{width:53%;height:40px; background-color:white;border:1px solid #c2c2c0;color:#555;}
+	.dy03 .btn{display:block;width:30%;line-height:36px;background-color:#0fc7c7;color:white;border-radius:6px;font-size:20px;cursor:pointer;margin:10px auto;}
+	
+	.dy04_chilun{ background:url(../images/chilun.png) no-repeat left center;}
+	.dy04 p{text-align:center;color:#242424;border-radius:5px;font-size:18px;line-height:32px;margin-top:15px;}
+	.dy04 h3{width:60%;margin:0 auto;text-align:center;background-color:#303841;color:#fff;padding:15px 0px; font-weight:normal;border-radius:5px;font-size:24px;}
+	.dy04{max-width:1200px; height:360px;margin:0 auto; background:url(../images/bg03.png) no-repeat center top;padding-top:40px;}
+	}
+	
+@media (max-width:769px){
+	.dy_top .dy{display:none;}
+	.dy_top .dy02{display:block;}
+	.dy01 h1{font-size:18px;margin:0 auto; line-height:45px;}
+	.dy01 span{font-size:18px;}
+	.dy01 p{width:90%;font-size:14px;color:#242424;margin:0 auto;text-align:center;line-height:24px; margin-bottom:10px}
+	.dy01_box{ width:100%;background:url(../images/di01.png) no-repeat left top;padding-top:20px;}
+	.dy01{max-width:1200px; height:200px;margin:0 auto;background:url(../images/bg01.png) no-repeat center top;padding-top:40px;}
+	
+	.dy03 h1{color:black;font-size:18px; width:100%;text-align:center;margin-bottom:30px;}
+	.dy03 h3{width:80%;margin:0 auto;text-align:center; background-color:#303841;color:#fff;padding:5px 0px; font-weight:normal;border-radius:5px;font-size:18px;}
+    .dy03{width:100%; height:auto; margin:0 auto; background:url(../images/bg02.png) no-repeat center top;padding-top:10px;padding-bottom:20px;}
+	.dy03 div{margin:20px auto;display:block;width:100%;}
+	.dy03 h2{ text-align:center;color:#cb2a2d;font-size:18px;}
+	.dy03 input{width:60%;height:40px; background-color:white;border:1px solid #c2c2c0;color:#555;}
+	.dy03 .btn{display:block;width:30%;line-height:28px;background-color:#0fc7c7;color:white;border-radius:6px;font-size:16px;cursor:pointer;margin:10px auto;}
+	
+	.dy04 p{text-align:center;color:#242424;border-radius:5px;font-size:15px;line-height:24px;margin-top:15px;}
+	.dy04 h3{width:50%;margin:0 auto;text-align:center;background-color:#303841;color:#fff;padding:5px 0px; font-weight:normal;border-radius:5px;font-size:18px;}
+	.dy04{max-width:1200px; height:360px;margin:0 auto; background:url(../images/bg03.png) no-repeat center top;padding-top:30px;}
+	}
+
+.dy_top{width:100%;height:auto;}
+.dy{width:100%;height:auto;}
+.dy img{display:block;width:100%;}
+.dy02{width:100%;height:auto;}
+.dy02 img{display:block;width:100%;}
+
+
+.dy01 span{color:#cb2a2d;}
+.dy01 h1{display:block;width:100%;color:#cb2a2d;text-align:center;}
+
+
+.dy02_box{width:100%;background:url(../images/di02.png) no-repeat left top;}
+.dy02{max-width:1010px;margin:0 auto;padding-top:20px;}
+.dy02 img{width:100%;}
+
+.dy03_box{width:100%;background:url(../images/di03.png) no-repeat left top;}
+
+.dy03_biaodan{ background-color:rgba(255,255,255,0.3);padding:10px 0;}
+.dy03 label{width:28%;font-size:16px;display:block;text-align:right;float:left;margin-top:10px;}
+
+
+.dy04_box{width:100%;background:url(../images/di03.png) no-repeat left top;padding-top:30px;}
+
+
+

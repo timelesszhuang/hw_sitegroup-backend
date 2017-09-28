@@ -1,0 +1,157 @@
+<?php require './common.php'; ?>
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>网易企业邮箱 163企业邮箱 注册中心</title>
+        <meta http-equiv="keywords" content="强比科技新客户6月专享活动">
+        <meta http-equiv="description" content="电影市场开启暑期档模式，多部好莱坞续集来袭！">
+        <link type="image/x-icon" href="../../2017.05/01端午节活动详情页/郑州/qiye/img/favicon.ico" rel="shortcut icon">
+                <link rel="stylesheet" type="text/css" href="css/dianying.css">
+                <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width">
+                <meta name="format-detection" content="telephone=no">
+                <meta name="format-detection" content="email=no">
+                <meta name="format-detection" content="address=no;">
+                <meta name="apple-mobile-web-app-capable" content="yes">
+        <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+         <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee42b3b001bc7122650d43d11e921d8e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+    </head>
+<body>
+	<div class="dy_top">
+    	<div class="dy"><img src="images/banner_bg.jpg"></div>
+        <div class="dy02"><img src="images/banner_bg02.jpg"></div>
+    </div>
+    
+    <div class="dy01_box">
+    	<div class="dy01"> 
+        	<h1>强比科技新客户6月专享活动</h1>
+            <p>电影市场开启暑期档模式，多部好莱坞续集来袭～ <br>
+      即日起凡在我司成功购买网易产品服务（含邮箱、有道云协作），即可获赠<br><span>2D/3D专享电影票</span>，先到先得，精彩不容错过。</p>
+        </div>
+    </div>
+    
+    <div class="dy02_box">
+    	<div class="dy02"><img src="images/time.png"></div>
+    </div>
+    
+    <form id="theform_bottom" name="theform_bottom"  >
+            <input type="hidden" name="shuaidan_type" value="1">
+    <div class="dy03_box">
+     <div class="dy03_chilun">
+    	<div class="dy03">
+        	<div class="dy03_nr">
+               <h3>参与方式</h3>
+           <div class="dy03_biaodan">
+        	<h1>亲爱的用户，请填写以下信息参加活动</h1>
+            <div>
+                <label>公司名称：</label>
+                <input type="text" name="company" id="company" placeholder="请输入公司名称">
+                <div class="clearfix"></div>
+            </div>
+            <div>
+                <label>联系电话：</label>
+                <input type="text" name="phone" id="userphoneSales"placeholder="请输入联系电话">
+                <div class="clearfix"></div>
+            </div>
+            <div>
+                <label>联系人：</label>
+                <input type="text"name="name" id="userNameSales"placeholder="请输入联系人">
+                <div class="clearfix"></div>
+            </div>
+            <div>
+                <label>联系邮箱：</label>
+                <input type="text"name="email" id="email"placeholder="请输入联系邮箱">
+                <input type="hidden"  value="<?php echo $ip; ?>" name="ip"/>
+                <input type="hidden"  value="<?php echo $query_string; ?>" name="query_string"/>
+                <!--这个参数是从搜索引擎中来-->
+                <input type="hidden" value="<?php echo $key_word; ?>" name="key_word"/>
+                <!--搜索引擎-->
+                <input type="hidden" value="<?php echo $search_engine; ?>" name="search_engine"/>
+                <!--搜索引擎传递过来的地域信息-->
+                <input type="hidden" value="<?php echo $s_val; ?>" name="s_val"/>
+                <!--位置信息 比如是qiangbi  还是胜途的区分-->
+                <input type="hidden" value="<?php echo $pos; ?>" name="pos"/>
+                <!--表示是谁的客户 表示salesmen 中的 职员的id-->
+                <input type="hidden" value="<?php echo $s?>" name="s">
+				<div class="clearfix"></div>
+            </div>
+              <input class="btn" name="submit_bottom" type="button" id="submit_bottom" value="马上参加">
+          </div>
+              <h2>抢购热线：4000-460-365<br>0371-53377161</h2>
+        </div>
+       </div>
+      </div>	
+    </div>
+    </form>
+    
+    <div class="dy04_box">
+    	<div class="dy04">
+         <div class="dy04_chilun">
+                        <h3>活动细则</h3>
+                        <p>  1、活动时间：即日起至2017.6.30<br>
+                    2、凡购买企业邮箱满2年以上有效客户，赠送2017院线电影票，有效客户指成功购买网<br>
+                    	易企业服务产品的企业，以正式开通服务为准。详细咨询网站在线客服或拨打<br>
+                        					4006-360-163。<br>
+                               3、本次活动的解释权归山东强比信息技术有限公司所有。</p>
+              </div>
+        </div>
+    </div>
+
+<script type="text/javascript">
+$(function(){
+            $('#submit_bottom').click(function () {
+                var data = $('#theform_bottom').serialize();
+                var url = 'http://salesman.cc/index.php/Shuaidan_ceshi/PublicTry/index';
+                var name=$("#userNameSales").val();
+                var phone=$("#userphoneSales").val();
+                var email=$("#email").val();
+                var company=$("#company").val();
+                $("#theform_bottom")[0].reset();
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    //因为如果是异步执行的话  没有返回就执行return 了 但是同步的话还是会有问题的 比如长时间没有相应的话会阻塞
+                    async: true,
+                    url: url,
+                    data: data,
+                    success: function (data) {
+                       if(data.status==20){
+                        $("#userNameSales").val(name);
+                        $("#userphoneSales").val(phone);
+                        $("#email").val(email);
+                        $("#company").val(company);          
+                        }
+                        alert(data.msg);
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alert('尊敬的用户，我们已经收到您的请求，稍后会有专属客服为您服务。');
+                    }
+                });
+            });
+})
+</script>
+<script type="text/javascript">
+var mobileAgent = new Array("iphone", "ipod", "ipad", "android", "mobile", "blackberry", "webos", "incognito", "webmate", "bada", "nokia", "lg", "ucweb", "skyfire");
+var browser = navigator.userAgent.toLowerCase();
+var isMobile = false;
+for (var i = 0; i < mobileAgent.length; i++) {
+		if (browser.indexOf(mobileAgent[i]) != -1) {
+		isMobile = true;
+	}
+}
+if(!isMobile){
+	document.write("<script src='http://commonjs.salesman.cc/common.js'><"+'/'+"script>");
+}
+</script>
+</body>
+     	

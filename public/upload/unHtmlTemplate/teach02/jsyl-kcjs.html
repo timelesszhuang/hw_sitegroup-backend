@@ -1,0 +1,358 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>教育模板</title>
+<link href="templatestatic/home.css"  rel="stylesheet" type="text/css" />
+<link href="templatestatic/css.css"  rel="stylesheet" type="text/css" />
+<link href="templatestatic/lrtk.css" rel="stylesheet" type="text/css" />
+<script src="templatestatic/jquery.js"></script>
+<script type="text/javascript" src="templatestatic/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="templatestatic/koala.min.1.5.js"></script>
+<link href="templatestatic/base.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="templatestatic/reset-min.css">
+<link href="templatestatic/tabulous.css" rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="templatestatic/jquery.min.js"></script>
+<script type="text/javascript" src="templatestatic/tabulous.js"></script>
+<script type="text/javascript">
+$(function(){	
+//顶部导航切换
+if($('.selected').length>1){
+  $(".nav .nav_dh").eq(0).removeClass('selected');
+}
+$(".nav .nav_dh").click(function(){
+$(".nav .nav_dh").removeClass("selected")
+$(this).addClass("selected");
+})
+})</script>
+</head>
+
+<body>
+<div class="top_box">
+	<div class="top">
+    	<div class="top_left">欢迎来到金色雨林</div>
+        <div class="top_right"><a href="">手机版</a>|<a href="">站点地图</a></div>
+        <div class="clearfix"></div>
+	</div>
+</div>
+
+<div class="logo_box">
+	<div class="logo"><img src="templatestatic/logo.png"></div>
+    <!--<div class="sousuo"><input class="sou" type="text" placeholder="热门搜索：教育 品牌 咨询"><input class="dian" type="button" value="搜索"></div>-->
+    <div class="top_tel">客服热线：<span style="display:block;color:#1bb0b6; font-weight:bold;font-size:24px;">400-0506-005</span></div>
+    <div class="clearfix"></div>
+</div>
+
+<div class="nav_box">
+<ul class="nav">
+	<li><a href="index.html">首页</a></li>
+    <li><a href="jsyl.html">金色雨林</a></li>
+    <li><a href="xqjs.html">校区介绍</a></li>
+    <li><a href="newslist.html">新闻资讯</a></li>
+    <li><a href="questionlist.html">教育常识</a></li>
+    <li><a href="sztd.html">师资团队</a></li>
+    <li><a href="jsyl-kcjs.html">课程介绍</a></li>
+    <li><a href="jsyl-ke.html">感觉动作统合</a></li>
+    <li><a href="jsyl-zhuyili.html">注意力记忆力</a></li>
+    <div class="clearfix"></div>
+</ul>
+</div>
+
+<div id="solid">
+    <div class="banner-jm"><img src="templatestatic/banner-kc.jpg"></div>
+    
+    <div class="banner_sqbox">
+    	<h1>金色雨林--加盟申请</h1>
+        <form class="banner_sq" id="theform">
+            <div>
+                <label>姓名：</label>
+                <input type="text" placeholder="请输入联系人姓名">
+            </div>
+            <div>
+                <label>年龄：</label>
+                <input type="text" placeholder="请输入学生年龄">
+            </div>
+            <div>
+                <label>电话：</label>
+                <input type="text" placeholder="电话号码/手机号码">
+            </div>
+            <!--隐藏表单-->
+            <input type="hidden" name="shuaidan_type" value="2">
+            <input type="hidden"  value="<?php echo $ip; ?>" name="ip"/>
+            <input type="hidden"  value="<?php echo $query_string; ?>" name="query_string"/>
+            <!--这个参数是从搜索引擎中来-->
+            <input type="hidden" value="<?php echo $key_word; ?>" name="key_word"/>
+            <!--搜索引擎-->
+            <input type="hidden" value="<?php echo $search_engine; ?>" name="search_engine"/>
+            <!--搜索引擎传递过来的地域信息-->
+            <input type="hidden" value="<?php echo $s_val; ?>" name="s_val"/>
+            <!--位置信息 比如是qiangbi  还是胜途的区分-->
+            <input type="hidden" value="<?php echo $pos; ?>" name="pos"/>
+            <!--表示是谁的客户 表示salesmen 中的 职员的id-->
+            <input type="hidden" value="<?php echo $s?>" name="s">
+        </form>
+        <input class="banner_sqbtn" type="submit" value="提交申请" id="submit">
+    </div>
+</div>
+</div>
+<script src="templatestatic/fordboy.js"></script>
+<script>
+    $(function(){
+        $('#submit').click(function () {
+            var data = $('#theform').serialize();
+            var url = 'http://salesman.cc/index.php/Shuaidan_ceshi/PublicTry/index';
+            var name=$("#userNameSales").val();
+            var phone=$("#userPhoneSales").val();
+            var email=$("#userEmail").val();
+            var company=$("#userCompany").val();
+            $("#theform")[0].reset();
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                //因为如果是异步执行的话  没有返回就执行return 了 但是同步的话还是会有问题的 比如长时间没有相应的话会阻塞
+                async: true,
+                url: url,
+                data: data,
+                success: function (data) {
+                    if(data.status==20){
+                        $("#userNameSales").val(name);
+                        $("#userPhoneSales").val(phone);
+                        $("#userEmail").val(email);
+                        $("#userCompany").val(company);
+                    }
+                    alert(data.msg);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert('尊敬的用户，我们已经收到您的请求，稍后会有专属客服为您服务。');
+                }
+            });
+        });
+    //----------------
+        $('#submit2').click(function () {
+            var data = $('#theform2').serialize();
+            var url = 'http://salesman.cc/index.php/Shuaidan_ceshi/PublicTry/index';
+            var name=$("#userNameSales2").val();
+            var phone=$("#userPhoneSales2").val();
+            var email=$("#userEmail2").val();
+            var company=$("#userCompany2").val();
+            $("#theform2")[0].reset();
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                //因为如果是异步执行的话  没有返回就执行return 了 但是同步的话还是会有问题的 比如长时间没有相应的话会阻塞
+                async: true,
+                url: url,
+                data: data,
+                success: function (data) {
+                    if(data.status==20){
+                        $("#userNameSales2").val(name);
+                        $("#userPhoneSales2").val(phone);
+                        $("#userEmail2").val(email);
+                        $("#userCompany2").val(company);
+                    }
+                    alert(data.msg);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert('尊敬的用户，我们已经收到您的请求，稍后会有专属客服为您服务。');
+                }
+            });
+        });
+
+    });
+
+</script>
+
+<div id="tabs">
+        <ul>
+          <li><a href="#tabs-1" title="">学习能力<span style="font-size:14px; display:block;">掌握学习能力，提高学习效率</span></a></li>
+          <li><a href="#tabs-2" title="">幼小衔接<span style="font-size:14px; display:block;">领先，从第一天入学开始</span></a></li>
+          <li><a href="#tabs-3" title="">情商课程<span style="font-size:14px; display:block;">赋予孩子开启幸福的能力</span></a></li>
+        </ul>
+
+		<div id="tabs_container">
+
+            <div id="tabs-1" class="lb">
+                <p>学习能力，简单来说就是孩子在学习过程中获得知识与经验的能力。它是一个具有复合性的概念，几乎包含了孩子学习生涯中所需要的所有素质：注意力、观察力、记忆力、想象力、创造力、理解力、语言表达、操作能
+                力、运算能力......只有以上能力完备的孩子才能在学习中全面发展，有良好的学习效果。</p>
+                <img src="templatestatic/jm01.jpg">
+            </div>
+    
+            <div id="tabs-2" class="lb">
+                <p>幼小衔接指幼儿教育的衔接。幼儿园时期的教育方式与小学教育方式两者差异甚大。而此时，孩子的年纪为4-6岁之间，年幼的很可能难以完成巨大的转变。没有良好的衔接孩
+                子会产生身体，心理和社会适应性方面的种种问题。</p>
+                <img src="templatestatic/kc-qs.jpg">		
+          </div>
+    
+          <div id="tabs-3" class="lb">
+                <p>提高情商，让每个孩子都有幸福的权利<br />多愁善感、孤僻、脾气火爆、缺少朋友、固执、缺乏创造力、粘人、厌学、急躁、自闭、自负、缺乏自信、懒惰、没责任心、消极、不分享、人来疯，以上这些现象往往出现在情
+                商不足的孩子身上，通过全面系统的课程培养，就能让孩子告别“熊孩子”的标签，成为人见人爱的好孩子。</p>
+                <img src="templatestatic/kc-yx.jpg">	
+          </div>
+
+		</div><!--End tabs container-->
+		
+	</div><!--End tabs-->
+
+	<script type="text/javascript" >
+		$(document).ready(function($) {
+		    $('#tabs').tabulous({effect: 'scale'});
+            $('#tabs2').tabulous({effect: 'slideLeft'});
+            $('#tabs3').tabulous({effect: 'scaleUp' });
+            $('#tabs4').tabulous({effect: 'flip' });
+        });
+    </script>
+
+
+<div class="jm_box">
+        <Div class="part3">
+        <div class="two_title">课程内容</div>
+    <div class="wrapper101">
+	<!--block1-->
+  				<div class="prize101">
+				  <div class="prize-con101 dd">
+						<ul>
+							<li><img src="templatestatic/kcnr01.jpg" />
+                            <p class="tjt">识别他人的情绪</p>
+                             <div class="cpx">
+                             能够敏感的感受到他人的需求和有望，是认知他人的情绪，这是与他人正常交往，实现顺利沟通的基础</div>   
+           				  </li>
+						  <li><img src="templatestatic/kcnr02.jpg" />
+                            <p class="tjt">处理人际关系</p>
+                             <div class="cpx">
+                             通过情绪反应、语言、动作、调控自己与他人的情绪，建立良好的人际关系</div>  
+           				  </li>
+						  <li><img src="templatestatic/kcnr03.jpg" />
+                            <p class="tjt">自我激励</p>
+                             <div class="cpx">
+                             依据活动的某种目标，调动、指挥情绪的能力，它能够使人走出生命中的低潮，重新出发</div>  
+           				  </li>
+                          <li><img src="templatestatic/kcnr04.jpg" />
+                            <p class="tjt">自我管理</p>
+                             <div class="cpx">
+                             调控自己的情绪，使之适时适度的表现出来，即能调控自己</div>   
+           				  </li>
+                          <li><img src="templatestatic/kcnr05.jpg" />
+                            <p class="tjt">了解自我</p>
+                             <div class="cpx">
+                             观察和审视自己的内心世界体验，只有认识自己，才能成为自己生活的主宰</div>  
+           				  </li>
+						</ul>
+					</div>
+					<div class="l-bun"></div>
+					<div class="r-bun"></div>
+				</div>
+	<!--block2-->
+				<div class="prize101 block202" style="display:none;">
+				<h2>奖品展示</h2>
+				<div class="prize-con101 dd">
+				</div>
+				<span class="l-bun"></span>
+				<span class="r-bun"></span>
+			</div>
+			</div>
+            <script src="templatestatic/yzlh1012.js"></script>
+</Div>
+</div>
+
+<div class="kcjs-three">
+	<div class="kcjs-bt">金色雨林情商课——<font style="color:#14adac;">与孩子一起，构建快乐的内心世界</font></div>
+	<div class="kcjs-threeleft">
+    	<div class="threeleft-bt">做好幼小衔接，提前适应社会生活，学业快人一步！</div>
+        <div class="threeleft-text">抓住6-12岁心理建设关键期，通过情商游戏、绘画心理、沙盘游戏等，让孩子在游戏过程中认识自我，关心他人，学会自我
+        管理及与人交往，激发想象力与创造力，让孩子体验生活的快乐</div>
+    </div>
+    <div class="kcjs-threeright"><img src="templatestatic/kc-qs(2).jpg"></div>
+</div>
+
+
+
+<div class="jsyl_jycs">
+<div class="jsyl_xg">相关文档</div>
+<div class="jsyl_jy">
+<div class="new_tltie">
+            <span>教育资讯 <font style="color:#1bb0b6;font-size:17px;">EDUCATION INFORMATION</font></span><a class="jy_more" href="">more+</a>
+        </div>
+<ul class="jsyl_jynr">
+    	<li><a href="">2017年教育网络安全工作研讨会圆满结束教育网络安全工作研讨会圆满结束</a><span>2017-08-02</span>
+        <div class="clearfix"></div>
+        </li>
+        <li><a href="">山东省广泛开展教师志愿服务</a><span>2017-07-29</span>
+        <div class="clearfix"></div>
+        </li>
+        <li><a href="">孩子花很多时间只爱读杂书不爱经典怎么办间只爱读杂书不爱经典怎么</a><span>2017-07-26</span>
+        <div class="clearfix"></div>
+        </li>
+        <li><a href="">山东省广泛开展教师志愿服务</a><span>2017-07-25</span>
+        <div class="clearfix"></div>
+        </li>
+        <li><a href="">家庭教育的指标是什么</a><span>2017-07-23</span>
+        <div class="clearfix"></div>
+        </li>
+        <div class="clearfix"></div>
+        </li>
+    </ul>
+</div>
+
+<div class="jsyl_jy">
+<div class="new_tltie">
+            <span>教育常识 <font style="color:#1bb0b6;font-size:17px;">EDUCATION KNOWLEDGE</font></span><a class="jy_more" href="">more+</a>
+        </div>
+<ul class="jsyl_jynr">
+    	<li><a href="">2017年教育网络安全工作研讨会圆满结束教育网络安全工作研讨会圆满结束</a><span>2017-08-02</span>
+        <div class="clearfix"></div>
+        </li>
+        <li><a href="">山东省广泛开展教师志愿服务</a><span>2017-07-29</span>
+        <div class="clearfix"></div>
+        </li>
+        <li><a href="">孩子花很多时间只爱读杂书不爱经典怎么办间只爱读杂书不爱经典怎么</a><span>2017-07-26</span>
+        <div class="clearfix"></div>
+        </li>
+        <li><a href="">山东省广泛开展教师志愿服务</a><span>2017-07-25</span>
+        <div class="clearfix"></div>
+        </li>
+        <li><a href="">家庭教育的指标是什么</a><span>2017-07-23</span>
+        <div class="clearfix"></div>
+        </li>
+        <div class="clearfix"></div>
+        </li>
+    </ul>
+</div>
+
+<div class="clearfix"></div>
+</div> 
+<div class="weilai_box">
+	<div class="weilai">
+	<div class="wl">为自己的未来，你还在等什么？</div><div class="zixun"><a href="https://cs.ecqun.com/mobile/rand?id=228266&scheme=0" target="_blank" >
+    立即咨询</a></div>
+    </div>
+</div>
+
+
+<div class="footer_box">
+<div class="footer">
+<ul class="nav">
+	<li><a href="index.html">首页</a></li>
+    <li><a href="jsyl.html">金色雨林</a></li>
+    <li><a href="newslist.html">新闻资讯</a></li>
+    <li><a href="questionlist.html">教育常识</a></li>
+    <li><a href="jsyl-jm.html">加盟申请</a></li>
+    <li><a href="jsyl-ke.html">感觉动作统合</a></li>
+    <li><a href="jsyl-zhuyili.html">注意力记忆力</a></li>
+    <div class="clearfix"></div>
+</ul>
+	<div class="footer_left">
+        邮箱：qiye@qiangbi.net<br>
+        公司地址：山东省济南市历下区龙奥北路8号玉兰广场2.3幢1单元1605室
+    </div>
+    <div class="footer_right">
+        全国咨询热线<br>
+        <font style="font-size:28px;">0531-82964080</font>
+    </div>
+    <div class="clearfix"></div>
+    <div class="copy">
+    	<font style="float:left;">copyright@2015-2020金色雨林学习能力中心 | 鲁ICP备案123456789号</font>
+    </div>
+</div>
+</div> 
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>教育模板</title>
+<link href="templatestatic/home.css"  rel="stylesheet" type="text/css" />
+<link href="templatestatic/css.css"  rel="stylesheet" type="text/css" />
+<link href="templatestatic/lrtk.css" rel="stylesheet" type="text/css" />
+<script src="templatestatic/jquery.js"></script>
+<script type="text/javascript" src="templatestatic/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="templatestatic/koala.min.1.5.js"></script>
+<script type="text/javascript">
+$(function(){	
+//顶部导航切换
+if($('.selected').length>1){
+  $(".nav .nav_dh").eq(0).removeClass('selected');
+}
+$(".nav .nav_dh").click(function(){
+$(".nav .nav_dh").removeClass("selected")
+$(this).addClass("selected");
+})
+})</script>
+</head>
+
+<body>
+<div class="top_box">
+	<div class="top">
+    	<div class="top_left">欢迎来到金色雨林</div>
+        <div class="top_right"><a href="">手机版</a>|<a href="">站点地图</a></div>
+        <div class="clearfix"></div>
+	</div>
+</div>
+
+<div class="logo_box">
+	<div class="logo"><img src="templatestatic/logo.png"></div>
+    <!--<div class="sousuo"><input class="sou" type="text" placeholder="热门搜索：教育 品牌 咨询"><input class="dian" type="button" value="搜索"></div>-->
+    <div class="top_tel">客服热线：<span style="display:block;color:#1bb0b6; font-weight:bold;font-size:24px;">400-0506-005</span></div>
+    <div class="clearfix"></div>
+</div>
+
+<div class="nav_box">
+<ul class="nav">
+	<li><a href="index.html">首页</a></li>
+    <li><a href="jsyl.html">金色雨林</a></li>
+    <li><a href="xqjs.html">校区介绍</a></li>
+    <li><a href="newslist.html">新闻资讯</a></li>
+    <li><a href="questionlist.html">教育常识</a></li>
+    <li><a href="sztd.html">师资团队</a></li>
+    <li><a href="jsyl-kcjs.html">课程介绍</a></li>
+    <li><a href="jsyl-ke.html">感觉动作统合</a></li>
+    <li><a href="jsyl-zhuyili.html">注意力记忆力</a></li>
+    <div class="clearfix"></div>
+</ul>
+</div>
+
+<div id="solid">
+    <div class="solid0"></div><div class="solid1"></div><div class="solid2"></div>
+    <ul>
+        <li><img src="templatestatic/banner01.jpg" /></li>
+        <li><img src="templatestatic/banner02.jpg" /></li>
+        <li><img src="templatestatic/banner04.jpg" /></li>
+    </ul>
+    <div id="btt"><span></span><span></span><span></span></div>
+    
+    <div class="banner_sqbox">
+    	<h1>金色雨林--加盟申请</h1>
+        <form class="banner_sq" id="theform">
+            <div>
+                <label>姓名：</label>
+                <input type="text" placeholder="请输入联系人姓名">
+            </div>
+            
+            <div>
+                <label>年龄：</label>
+                <input type="text" placeholder="请输入学生年龄">
+            </div>
+            <div>
+                <label>电话：</label>
+                <input type="text" placeholder="电话号码/手机号码">
+            </div>
+            
+            <!--隐藏表单-->
+            <input type="hidden" name="shuaidan_type" value="2">
+            <input type="hidden"  value="<?php echo $ip; ?>" name="ip"/>
+            <input type="hidden"  value="<?php echo $query_string; ?>" name="query_string"/>
+            <!--这个参数是从搜索引擎中来-->
+            <input type="hidden" value="<?php echo $key_word; ?>" name="key_word"/>
+            <!--搜索引擎-->
+            <input type="hidden" value="<?php echo $search_engine; ?>" name="search_engine"/>
+            <!--搜索引擎传递过来的地域信息-->
+            <input type="hidden" value="<?php echo $s_val; ?>" name="s_val"/>
+            <!--位置信息 比如是qiangbi  还是胜途的区分-->
+            <input type="hidden" value="<?php echo $pos; ?>" name="pos"/>
+            <!--表示是谁的客户 表示salesmen 中的 职员的id-->
+            <input type="hidden" value="<?php echo $s?>" name="s">
+        </form>
+        <input class="banner_sqbtn" type="submit" value="提交申请" id="submit">
+    </div>
+</div>
+</div>
+<script src="templatestatic/fordboy.js"></script>
+<script>
+    $(function(){
+        $('#submit').click(function () {
+            var data = $('#theform').serialize();
+            var url = 'http://salesman.cc/index.php/Shuaidan_ceshi/PublicTry/index';
+            var name=$("#userNameSales").val();
+            var phone=$("#userPhoneSales").val();
+            var email=$("#userEmail").val();
+            var company=$("#userCompany").val();
+            $("#theform")[0].reset();
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                //因为如果是异步执行的话  没有返回就执行return 了 但是同步的话还是会有问题的 比如长时间没有相应的话会阻塞
+                async: true,
+                url: url,
+                data: data,
+                success: function (data) {
+                    if(data.status==20){
+                        $("#userNameSales").val(name);
+                        $("#userPhoneSales").val(phone);
+                        $("#userEmail").val(email);
+                        $("#userCompany").val(company);
+                    }
+                    alert(data.msg);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert('尊敬的用户，我们已经收到您的请求，稍后会有专属客服为您服务。');
+                }
+            });
+        });
+    //----------------
+        $('#submit2').click(function () {
+            var data = $('#theform2').serialize();
+            var url = 'http://salesman.cc/index.php/Shuaidan_ceshi/PublicTry/index';
+            var name=$("#userNameSales2").val();
+            var phone=$("#userPhoneSales2").val();
+            var email=$("#userEmail2").val();
+            var company=$("#userCompany2").val();
+            $("#theform2")[0].reset();
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                //因为如果是异步执行的话  没有返回就执行return 了 但是同步的话还是会有问题的 比如长时间没有相应的话会阻塞
+                async: true,
+                url: url,
+                data: data,
+                success: function (data) {
+                    if(data.status==20){
+                        $("#userNameSales2").val(name);
+                        $("#userPhoneSales2").val(phone);
+                        $("#userEmail2").val(email);
+                        $("#userCompany2").val(company);
+                    }
+                    alert(data.msg);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert('尊敬的用户，我们已经收到您的请求，稍后会有专属客服为您服务。');
+                }
+            });
+        });
+
+    });
+
+</script>
+
+
+<div class="kecheng">
+	<div class="ke_left"><img src="templatestatic/xue.jpg"></div>
+    <div class="ke_center">
+    	<img src="templatestatic/zhu.jpg"><img src="templatestatic/gan.jpg">
+    </div>
+    <div class="ke_right">
+    	<img src="templatestatic/you.jpg"><img src="templatestatic/qing.jpg">
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+<div class="sy_xqjs">
+	<div class="new_tltie">
+        <span>校区介绍 <font style="color:#1bb0b6;font-size:17px;">CAMPUS PRESENTATION</font></span><a class="jy_more" href="xqjs.html">more+</a></div>
+        <div class="sy_xqcol">
+        	<a href="xqjs-yulan.html"><div class="syxq_img"><img src="templatestatic/hj07.jpg"></div>
+            <div class="syxq_zi">玉兰广场校区</div></a>
+        </div>
+        <div class="sy_xqcol">
+        	<a href="xqjs-yulan.html"><div class="syxq_img"><img src="templatestatic/hj01.jpg"></div>
+            <div class="syxq_zi">万科城校区</div></a>
+        </div>
+    </div>
+	
+</div>
+
+<DIV CLASS="sy_sz">
+<div class="new_tltie">
+        <span>师资团队<font style="color:#1bb0b6;font-size:17px;">TEACHERS TEAM</font></span><a class="jy_more" href="sztd.html">more+</a></div>
+<div class="sz_box">
+    	<div class="sz">
+        	<div class="sz_img"><img src="templatestatic/sz01.jpg"></div>
+            <div class="sz_img"><img src="templatestatic/sz02.jpg"></div>
+            <div class="sz_img"><img src="templatestatic/sz03.jpg"></div>
+            <div class="sz_img"><img src="templatestatic/sz04.jpg"></div>
+            <div class="sz_img"><img src="templatestatic/sz05.jpg"></div>
+            <div class="sz_img"><img src="templatestatic/sz06.jpg"></div>
+            <div class="sz_img"><img src="templatestatic/sz07.jpg"></div>
+        </div>
+        <div class="sz_title">金色雨林师资力量雄厚，中国儿童学习能力领导品牌！</div>
+    </div>
+</DIV>
+<div class="jy_box">
+<div class="jy">
+	<div class="zs">
+        <div class="new_tltie">
+            <span>教育资讯 <font style="color:#1bb0b6;font-size:17px;">EDUCATION INFORMATION</font></span><a class="jy_more" href="newslist.html">more+</a>
+            
+        </div>
+        <div class="zs_col">
+        	<div class="zs_img"><img src="templatestatic/01.jpg"></div>
+            <h2>2017年教育网络工作研讨会圆满结束</h2>
+            2017年“教育网络安全工作研讨会”于5月18日17:00...
+        </div>
+        <div class="zs_col">
+        	<div class="zs_img"><img src="templatestatic/01.jpg"></div>
+            <h2>2017年教育网络工作研讨会圆满结育网络工作研讨会圆满结</h2>
+            2017年“教育网络安全工作研讨会”于5月18日...
+        </div>
+        <div class="zs_col">
+        	<div class="zs_img"><img src="templatestatic/01.jpg"></div>
+            <h2>2017年教育网络工作研讨会圆育网络工作研讨会圆满结满结束</h2>
+            2017年“教育网络安全工作研讨会”于5月18日...
+        </div>
+        <div class="zs_col">
+        	<div class="zs_img"><img src="templatestatic/01.jpg"></div>
+            <h2>2017年教育网络工作研讨会圆满结束</h2>
+            2017年“教育网络安全工作研讨会”于5月18日...
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+</div>
+
+
+<div class="hy_lx">
+<div class="hy_new">
+<div class="new_tltie">
+            <span>教育常识 <font style="color:#1bb0b6;font-size:17px;">EDUCATION KNOWLEDGE</font></span><a class="jy_more" href="questionlist.html">more+</a>
+            
+        </div>
+<ul class="hy_nr">
+    	<li><a href="">2017年教育网络安全工作研讨会圆满结束教育网络安全工作研讨会圆满结束</a><span>2017-08-02</span>
+        <div class="clearfix"></div>
+        </li>
+        <li><a href="">山东省广泛开展教师志愿服务</a><span>2017-07-29</span>
+        <div class="clearfix"></div>
+        </li>
+        <li><a href="">孩子花很多时间只爱读杂书不爱经典怎么办间只爱读杂书不爱经典怎么</a><span>2017-07-26</span>
+        <div class="clearfix"></div>
+        </li>
+        <li><a href="">山东省广泛开展教师志愿服务</a><span>2017-07-25</span>
+        <div class="clearfix"></div>
+        </li>
+        <li><a href="">家庭教育的指标是什么</a><span>2017-07-23</span>
+        <div class="clearfix"></div>
+        </li>
+        <li><a href="">家庭教育的指标是什么</a><span>2017-07-23</span>
+        <div class="clearfix"></div>
+        </li>
+        
+        <div class="clearfix"></div>
+        </li>
+    </ul>
+</div>
+
+<div class="contact">
+	<div class="new_tltie">
+            联系我们 <font style="color:#1bb0b6;font-size:17px;">CONTACT</font>
+        </div>
+        <div class="lx">
+	<div class="lx_left">
+    	<img src="templatestatic/wx.jpg">扫一扫，关注我们
+    </div>
+    <div class="lx_right">
+    	咨询电话<br><font style="font-size:24px; font-weight:bold;">400-0506-005</font><br>
+        地址：山东省济南市龙奥北路8号玉兰广场2.3幢1单元1605室
+    </div>
+    <div class="clearfix"></div>
+    </div>
+</div>
+<div class="clearfix"></div>
+</div> 
+
+<div class="weilai_box">
+	<div class="weilai">
+	<div class="wl">为自己的未来，你还在等什么？</div><div class="zixun"><a href="https://cs.ecqun.com/mobile/rand?id=228266&scheme=0" target="_blank" >
+    立即咨询</a></div>
+    </div>
+</div>
+
+
+<div class="footer_box">
+<div class="footer">
+<ul class="nav">
+	<li><a href="index.html">首页</a></li>
+    <li><a href="jsyl.html">金色雨林</a></li>
+    <li><a href="xqjs.html">校区介绍</a></li>
+    <li><a href="newslist.html">新闻资讯</a></li>
+    <li><a href="questionlist.html">教育常识</a></li>
+    <li><a href="sztd.html">师资团队</a></li>
+    <li><a href="jsyl-kcjs.html">课程介绍</a></li>
+    <li><a href="jsyl-ke.html">感觉动作统合</a></li>
+    <li><a href="jsyl-zhuyili.html">注意力记忆力</a></li>
+    <div class="clearfix"></div>
+</ul>
+	<div class="footer_left">
+        邮箱：qiye@qiangbi.net<br>
+        公司地址：山东省济南市历下区龙奥北路8号玉兰广场2.3幢1单元1605室
+    </div>
+    <div class="footer_right">
+        全国咨询热线<br>
+        <font style="font-size:28px;">0531-82964080</font>
+    </div>
+    <div class="clearfix"></div>
+    <div class="copy">
+    	<font style="float:left;">copyright@2015-2020金色雨林学习能力中心 | 鲁ICP备案123456789号</font>
+    </div>
+</div>
+</div> 
+</body>
+</html>
